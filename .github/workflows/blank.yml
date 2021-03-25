@@ -20,7 +20,8 @@ on:
   workflow_dispatch:
 
 env:
-  JOB_NAME: ${{ github.job }}
+  true_env: true
+  false_env: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,14 +38,10 @@ jobs:
       - name: Run
         run: python3 src/program.py
 
-  build2:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+      - name: TestTrue
+        if: ${{ env.true_env }}
+        run: echo "It's True"
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Run
-        run: python3 src/program.py
+      - name: TestFalse
+        if: ${{ env.false_env }}
+        run: echo "It's False"

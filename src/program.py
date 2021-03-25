@@ -5,8 +5,7 @@
 # Line 5
 # Line 6
 
-import os
-print("Hello", os.environ.get('JOB_NAME'))
+print("Hello")
 
 # print('::warning ::Warning no file')
 # print('::error ::Error no file')

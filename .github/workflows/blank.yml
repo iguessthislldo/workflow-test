@@ -39,9 +39,9 @@ jobs:
         run: python3 src/program.py
 
       - name: TestTrue
-        if: ${{ env.true_env }}
+        if: ${{ fromJSON(env.true_env) }}
         run: echo "It's True"
 
       - name: TestFalse
-        if: ${{ env.false_env }}
+        if: ${{ fromJSON(env.false_env) }}
         run: echo "It's False"
